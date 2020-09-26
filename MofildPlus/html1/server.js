@@ -88,4 +88,4 @@ http.createServer(requestHandler)
 //step 3) listen for an HTTP request on port 3000
 .listen(3000);
 
-console.log('Node server is running on http://localhost:3000');
+console.log('Node v2 server is running on http://185.126.200.191:3000');

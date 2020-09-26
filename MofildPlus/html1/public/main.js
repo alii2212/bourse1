@@ -86,9 +86,14 @@ const outputHtml = matches =>{
     matchList.innerHTML = '';
     IR = match.isin
 
+
+    setCookie("tok",tokenBidar.value);
   }
   
 
+  function setCookie(c_name, value) {
+    return localStorage.setItem(c_name, value);
+}
 
 
  var parseJson = function(){
@@ -170,7 +175,7 @@ const outputHtml = matches =>{
  
  
 
-    var timeleft = 10;
+    var timeleft = 1000;
     clearInterval(downloadTimer);
     var Timer = setInterval(function(){
         timeleft--;
@@ -185,12 +190,11 @@ const outputHtml = matches =>{
 
         }
 
-            
         if(timeleft <= 0){
             console.log("clear timer")
             clearInterval(Timer);
         }
-        },50);
+        },100);
        
 
 
@@ -234,28 +238,34 @@ function sendRequeststoBidar(orderJson,selectToken){
     console.log("order ",orderJson);
     
     var myHeaders = new Headers();
-        myHeaders.append("Host", " ebb.exirbroker.com");
-        myHeaders.append("Connection", " keep-alive");
-        myHeaders.append("Pragma", " no-cache");
-        myHeaders.append("Cache-Control", " no-cache");
-        myHeaders.append("Accept", " application/json, text/plain, */*");
-        myHeaders.append("User-Agent", " Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36");
-        myHeaders.append("Content-Type", " application/json");
-        myHeaders.append("Origin", " https://ebb.exirbroker.com");
-        myHeaders.append("Sec-Fetch-Site", " same-origin");
-        myHeaders.append("Sec-Fetch-Dest", " empty");
-        myHeaders.append("Referer", " https://ebb.exirbroker.com/mainNew");
-        myHeaders.append("Accept-Encoding", " gzip, deflate, br");
+    myHeaders.append("Accept", "application/json, text/plain, */*");
+    myHeaders.append("Accept-Encoding", " gzip, deflate, br");
+    myHeaders.append("Content-Type", "application/json");
+
+    myHeaders.append("Cache-Control", "no-cache");
+    myHeaders.append("Connection", "keep-alive");
+    myHeaders.append("Pragma", "no-cache");
+    myHeaders.append("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36");
+    myHeaders.append("Sec-Fetch-Dest", "empty");
+    myHeaders.append("Host", "ebb.exirbroker.com");
+    myHeaders.append("Origin", "https://ebb.exirbroker.com");
+    myHeaders.append("Referer", "https://ebb.exirbroker.com/mainNew");
+    myHeaders.append("Sec-Fetch-Site", "same-origin");
+
+
+      
         myHeaders.append("Cookie", selectToken);
 
     
+
 
         var requestOptions = {
             method: 'POST',
             headers: myHeaders,
             body: orderJson,
-            redirect: 'follow'
-          };
+            redirect: 'follow',
+            credentials: 'include'
+        };
           
           fetch("https://ebb.exirbroker.com/api/v1/order", requestOptions)
             .then(response => response.text())
@@ -263,5 +273,6 @@ function sendRequeststoBidar(orderJson,selectToken){
             .then(json => console.log(json))
             .catch(error => console.log('error', error));
 
+           
 
 }
