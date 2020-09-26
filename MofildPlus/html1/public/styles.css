@@ -1,0 +1,74 @@
+
+  h1 {
+    color: blue;
+  }
+
+  .t0 {
+    color: yellow;
+    padding: 10px;
+    size: 20px;
+  }
+
+  .t1 {
+    color: green;
+    padding: 10px;
+    size: 20px;
+  }
+
+  .t2 {
+    color: red;
+    padding: 10px;
+    size: 20px;
+  }
+
+
+  p {
+          margin: 10px;
+  }
+
+  .box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10p;
+}
+
+.center {
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+  }
+
+  label {
+      padding: 10px;
+  }
+
+  input[type='radio'] { 
+      transform: scale(2); 
+    }
+
+    .btn-huge{
+        padding-top:20px;
+        padding-bottom:20px;
+    }   
+
+    .colorBox{
+      margin: 10px auto;
+      padding: 20px;
+      color: #fff;
+  }
+  
+  .redBack{
+      background-color: #800000;
+  }
+  
+  
+  .blueBack{
+      background-color: #330099;
+  }
+  
+  img{
+      display: block;
+      width: 60%;
+      margin: 10px auto;
+  }
