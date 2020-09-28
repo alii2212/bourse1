@@ -52,7 +52,7 @@
 
 };
 
-tokenMofid.value = "BasicAuthentication de125a2c-c716-42e7-b86b-e13e0fc62743";
+tokenMofid.value =  "" // "BasicAuthentication de125a2c-c716-42e7-b86b-e13e0fc62743";
 //show results
 const outputHtml = matches =>{
     if(matches.length>0){
@@ -156,15 +156,15 @@ const outputHtml = matches =>{
                 "CautionAgreementSelected":false,
                 "IsSymbolSepahAgreement":false,
                 "SepahAgreementSelected":true,
-                "FinancialProviderId":10,
-                "minimumQuantity":10,
+                "FinancialProviderId":1,
+                "minimumQuantity":0,
                 "maxShow":0,
                 "orderId":0,
                 "orderSide":side,
                 "orderValidity":74,
                 "orderValiditydate":null,
                 "shortSellIsEnabled":false,
-                "shortSellIncentivePercent":10
+                "shortSellIncentivePercent":0
             }
 
     }
@@ -181,11 +181,11 @@ const outputHtml = matches =>{
         timeleft--;
 
         if(bidarCheck.checked){
-            order.quantity = order.quantity -1
+            // order.quantity = order.quantity -1
             console.log(sendRequeststoBidar(JSON.stringify(order),selectToken))
 
         }else{
-            order.orderCount = order.orderCount -1;
+            // order.orderCount = order.orderCount -1;
             console.log(sendRequeststoMofid(JSON.stringify(order),selectToken))
 
         }

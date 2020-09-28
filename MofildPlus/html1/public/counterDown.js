@@ -1,5 +1,5 @@
 
-var timeleft = 5;
+var timeleft = 10;
 clearInterval(downloadTimer);
 var downloadTimer = setInterval(function(){
 timeleft--;
